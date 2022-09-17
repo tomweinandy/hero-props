@@ -1,0 +1,33 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('https://melmagazine.com/wp-content/uploads/2019/05/plasticbag-1280x533.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Transaction Complete</h1>
+            <span class="subheading">Thank you for shopping with This Old Thing!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        We do not have a purchase system set up at this time, so I guess you get it for free. Please read
+        the <a href="/about" style="color:blue">About</a> page for more details.
+        <br> <br>
+        Your purchase comes with the most beautiful plastic bag in the world. Enjoy!
+      </div>
+    </div>
+  </div>
+
+{% include "footer.html" %}
+{% endblock %}

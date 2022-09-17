@@ -1,0 +1,66 @@
+{% include "header.html" %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/hanger-51.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>This Old Thing</h1>
+            <span class="subheading">Selling some items I found in an abandoned self-storage unit.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% for post in all_posts %}
+        <div class="post-preview" style="width:100%; display:flex; ">
+
+          <div style="width:25%; display: inline-block;">
+            <img src="{{post.img_url}}" width="256" height="128">
+          </div>
+
+          <div style="width:60%; display: inline-block; text-align: center; margin-left: 10%;">
+            <br>
+            <span>          </span>
+            <a href="{{ url_for('show_post', post_id=post.id) }}">
+              <h3 class="post-title">
+                {{post.title}}
+              </h3>
+            </a>
+          </div>
+
+          <div style="width:15%; display: inline-block; text-align: right;">
+            <p class="post-subtitle">
+              {{post.price}}
+              <!--        If user id is 1 then they can see the delete button -->
+              {% if current_user.id == 1: %}
+                <a href="{{url_for('delete_post', post_id=post.id) }}">✘</a>
+              {% endif %}
+            </p>
+          </div>
+
+        </div>
+        <br>
+        {% endfor %}
+
+
+        <!-- New Post -->
+<!--    If user id is 1 then they can see the Create New Post button -->
+        {% if current_user.id == 1: %}
+        <div class="clearfix">
+          <a class="btn btn-primary float-right" href="{{url_for('add_new_post')}}">Create New Post</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <hr>
+
+{% include "footer.html" %}
